@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris Jokes</title>
+</head>
+<body>
+   <h1 id="chuckSays">Chuck Says...</h1> 
+
+   <button id="refreshQuote">Get a new Chuck Norris quote</button>
+
+   <div id="quoteDIV">
+    <p></p>
+   </div>
+</body>
+<script>
+    const refreshQuoteInput = document.getElementById("#refreshQuote").value;
+    const quoteDIV = document.getElementById("#quoteDiv").value;
+
+    function getQuote() {
+        fetch('https://api.chucknorris.io/jokes/random')
+            .then(response => {
+                console.log(response);
+            })
+
+            .then(data => {
+                console.log(data);
+                let quoteDIV =document.write(`<p>${data.value}</p>`);
+            });
+
+    }
+    
+    
+    refreshQuoteInput.addEventListner("change", getQuote, true);
+    // .then(resp => resp.json())
+// .then(data => {
+//     console.log(data);
+//     document.write(`<p>${data.value}</p>`);
+// });
+
+</script>
+</html>
+
